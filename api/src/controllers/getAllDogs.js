@@ -6,7 +6,7 @@ const getAllDogs = async(req, res) => {
     const info= await allDogs({});
     const page = 1;
     const limit = 8; 
-   // if(info.length === 0) throw new Error("No results ");
+   
     const total = info.length;
     let data= pagination(page,limit,total,info)
     const response = {

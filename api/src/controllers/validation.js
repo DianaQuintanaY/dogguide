@@ -2,9 +2,7 @@ const {Temperaments} = require('../db');
 const validation = async (req,res,next) => {
     try{
         const formatoImagenRegex = /\.(jpg|jpeg|png)$/;
-
         const {image, name, heightMin, heightMax, weightMin, weightMax, life_span, temperaments} = req.body;
-
         if(!image || !name || !heightMax || !heightMin || !weightMax || !weightMin || !life_span ) 
             throw new Error('Faltan completar datos');
         if( name.length > 35) 

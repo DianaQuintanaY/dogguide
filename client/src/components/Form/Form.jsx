@@ -54,7 +54,7 @@ const Form = () => {
       event.preventDefault();
       dispatch(saveCharacters(formData));
       setwindowD(true);
-    }else{
+    } else {
       window.alert('Completar Errores')
     }
     
@@ -70,54 +70,54 @@ const Form = () => {
 
   return(
     <div className="form">
-    <form className="create" onSubmit={handleSubmit}>
-      <label>Name of Breeds: </label>
-      <input name="name" type="text" value={formData.name} onChange={handleInputChange}></input>
-      {errors.name? <p>{errors.name}</p> : <p> </p>}
-    
-      <label>Image: </label>
-      <input name="image" type="text" value={formData.image} onChange={handleInputChange}></input>
-      {errors.image? <p>{errors.image}</p> : <p> </p>}
-     
-      <label>Height: </label>
-      <br/>
-      <label>min: </label>
-      <input className = "number" name="heightMin" type="number" value={formData.heightMin} onChange={handleInputChange}></input>
-      <span> cm</span>
-      <label>  -  max: </label>
-      <input className = "number" name="heightMax" type="number" value={formData.heightMax} onChange={handleInputChange}></input>
-      <span> cm</span>
-      {errors.heightMin? <p>{errors.heightMin}</p> : errors.heightMax? <p>{errors.heightMax}</p> : <p> </p>}
+      <form className="create" onSubmit={handleSubmit}>
+        <label>Name of Breeds: </label>
+        <input name="name" type="text" value={formData.name} onChange={handleInputChange}></input>
+        {errors.name? <p>{errors.name}</p> : <p> </p>}
+      
+        <label>Image: </label>
+        <input name="image" type="text" value={formData.image} onChange={handleInputChange}></input>
+        {errors.image? <p>{errors.image}</p> : <p> </p>}
+      
+        <label>Height: </label>
+        <br/>
+        <label>min: </label>
+        <input className = "number" name="heightMin" type="number" value={formData.heightMin} onChange={handleInputChange}></input>
+        <span> cm</span>
+        <label>  -  max: </label>
+        <input className = "number" name="heightMax" type="number" value={formData.heightMax} onChange={handleInputChange}></input>
+        <span> cm</span>
+        {errors.heightMin? <p>{errors.heightMin}</p> : errors.heightMax? <p>{errors.heightMax}</p> : <p> </p>}
 
-      <label>Weight:</label>
-      <br/>
-      <label>min: </label>
-      <input className = "number" name="weightMin" type="number" value={formData.weightMin} onChange={handleInputChange}></input>
-      <span> kg</span>
-      <label>  -  max: </label>
-      <input className = "number" name="weightMax" type="number" value={formData.weightMax} onChange={handleInputChange}></input>
-      <span> kg</span>
-      {errors.weightMin? <p>{errors.weightMin}</p>: errors.weightMax? <p>{errors.weightMax}</p>: <p> </p>}
+        <label>Weight:</label>
+        <br/>
+        <label>min: </label>
+        <input className = "number" name="weightMin" type="number" value={formData.weightMin} onChange={handleInputChange}></input>
+        <span> kg</span>
+        <label>  -  max: </label>
+        <input className = "number" name="weightMax" type="number" value={formData.weightMax} onChange={handleInputChange}></input>
+        <span> kg</span>
+        {errors.weightMin? <p>{errors.weightMin}</p>: errors.weightMax? <p>{errors.weightMax}</p>: <p> </p>}
 
-      <label>Life span: </label>
-      <input className = "number" name="life_span" type="number" value={formData.life_span} onChange={handleInputChange} ></input>
-      {errors.life_span? <p>{errors.life_span}</p>  : <p> </p>}
+        <label>Life span: </label>
+        <input className = "number" name="life_span" type="number" value={formData.life_span} onChange={handleInputChange} ></input>
+        {errors.life_span? <p>{errors.life_span}</p>  : <p> </p>}
 
-      <label>Temperaments: </label>
-      <MultiList setInFormTemperaments={setInFormTemperaments} />
-      <br/>
-      <button type="submit">SUBMIT</button>
-    </form>
-    <div>
-      <Card
-       key = 'prev'
-       id = {undefined}
-       name = {formData.name}
-       temperaments = {formData.temperaments.join(', ')}
-       weight = {`${formData.weightMin}- ${formData.weightMax}`}
-       image = {formData.image? formData.image: imageDefault }
-      />
-    </div>
+        <label>Temperaments: </label>
+        <MultiList setInFormTemperaments={setInFormTemperaments} />
+        <br/>
+        <button type="submit">SUBMIT</button>
+      </form>
+      <div>
+        <Card
+        key = 'prev'
+        id = {undefined}
+        name = {formData.name}
+        temperaments = {formData.temperaments.join(', ')}
+        weight = {`${formData.weightMin}- ${formData.weightMax}`}
+        image = {formData.image? formData.image: imageDefault }
+        />
+      </div>
     {windowD && <WindowDetail onClose={onClose}/>}
     </div>
   )

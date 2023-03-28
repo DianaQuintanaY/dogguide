@@ -7,7 +7,6 @@ const getDogsSearchByName = async(req, res) => {
     const info= await allDogs({name:q});
     const newPage = Number(page);
  
-    // if(info.length === 0) throw new Error("No hay coincidencia con el nombre enviado");
     const total = info.length;
     let data= pagination(newPage,limit,total,info)
     const response = {

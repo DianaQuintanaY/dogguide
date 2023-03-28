@@ -43,7 +43,7 @@ const getDogsById = async(req, res) => {
         life_span: result.life_span,
         temperaments: newTemperaments}
     }
-      return res.json(dogDetail)
+    return res.json(dogDetail)
   } catch (err){
     return res.status(404).send(err.message)   
   }

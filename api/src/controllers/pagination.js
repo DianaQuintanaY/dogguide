@@ -5,10 +5,7 @@
   if(startIndex === 0 &&  endIndex > total-1) data = array.slice();
   else if(endIndex > total-1) data = array.slice(startIndex);
   else data=array.slice(startIndex,endIndex);
-
   return data
-  
-
 };
 
 module.exports = {pagination}

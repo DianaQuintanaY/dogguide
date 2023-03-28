@@ -15,6 +15,7 @@ const getDogsSearch = async(req, res) => {
       data,
       filters:{}
     };
+    
     if(temperaments) response.filters.temperaments = temperaments;
     if(ordenBy) response.filters.ordenBy= ordenBy;
     if(characteristics) response.filters.characteristics = characteristics;

@@ -1,0 +1,42 @@
+.detail {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  width: auto;
+}
+
+.detail img{
+  height: 500px;
+  width: 320px;
+  margin: 0px 20px 20px 20px;
+
+}
+
+.detailText h1 {
+  text-align: left;
+  color: rgb(88, 88, 88);
+  font-weight: 100;
+  font-family: 'Abel';
+}
+
+.detailText b{
+  color: black;
+}
+
+h1.back{
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+h1.back:hover{
+  color: rgb(59, 113, 113);
+  width: fit-content;
+  cursor: pointer;
+}
+
+h1.back:active{
+  color: rgb(86, 165, 165);
+  width: min-content;
+  height: minnpm sta-content;
+}

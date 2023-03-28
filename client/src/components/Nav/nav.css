@@ -1,0 +1,40 @@
+
+.nav{
+    background-color: black;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.nav li {
+  padding: 1.2rem;
+  
+}
+
+.navText{
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-family: 'Abel';
+  font-size: 3.2rem;
+  padding: 1.0rem;
+}
+
+.navText:hover{
+  text-decoration: underline;
+  color: aqua;
+}
+
+.navActive{
+  color: rgb(59, 124, 124)
+}
+
+.navActive:hover{
+  color: rgb(59, 124, 124);
+  text-decoration: none;
+  cursor: default
+}

@@ -1,0 +1,49 @@
+
+.multiselect {
+  width: 200px;
+  height: auto;
+  font-family: 'Abel';
+}
+
+.selectBox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.selectBox input {
+  width: 100%;
+  font-weight: bold;
+}
+.select{
+  border: 1px solid;
+  display: inline-block;
+}
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  width: 200px;
+  height: 50px;
+  display: block;
+  border: 1px #dadada solid;
+  text-align: left;
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+

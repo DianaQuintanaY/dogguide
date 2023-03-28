@@ -1,0 +1,59 @@
+.filters{
+  background-color: white;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.filters .bold{
+  font-weight: bold;
+}
+
+.filters label{
+  font-family: 'Abel', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+.filters button{
+  background-color: black;
+  color: white;
+  float: right;
+  border-radius: 5px;
+}
+
+.filters button:hover{
+  color: aqua;
+}
+
+.filters button:active{
+  color: aqua;
+}
+
+.filters input:checked{
+  background-color: aqua;
+  border-color: aqua;
+}
+
+.filtros{
+  display: flex;
+  flex-direction: row;
+}
+
+.labels{
+  width: 400px;
+  height: 150px;
+  overflow-x: scroll;
+}
+
+.labels label{
+  background-color: white;
+  line-height: 2.5;
+  padding: 3px;
+  margin:  5px;
+}
+
+#chosen{
+  font-weight: bold;
+}
+

@@ -1,0 +1,10 @@
+.noActive{
+  background-color: black;
+  color: white;
+
+}
+
+.isActive{
+  background-color: white;
+  color: black;
+}

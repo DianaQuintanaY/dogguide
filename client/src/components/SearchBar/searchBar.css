@@ -1,0 +1,12 @@
+.searchbar{
+  background-color: black;
+  color: white;
+}
+
+.searchbar:hover{
+  color: aqua;
+}
+
+.searchbar:active{
+  color: aqua;
+}

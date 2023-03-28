@@ -1,0 +1,17 @@
+.windowDetail{
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  border: 3px solid;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#green{
+  background-color: greenyellow;
+  color: black
+}
+
+#red{
+  background-color: red;
+}

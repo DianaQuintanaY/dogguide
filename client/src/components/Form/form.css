@@ -1,0 +1,42 @@
+.create {
+  width: 350px;
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-family: 'Abel';
+}
+
+.form label{
+  font-weight: bold;
+}
+
+.form button{
+  float: right;
+  background-color: black;
+  color: white;
+  font-size: large;
+  border-radius: 5px;
+}
+
+.form button:hover{
+  color: aqua;
+}
+
+.number{
+  width: 40px;
+}
+
+.form p{
+  color: red;
+  height: 1.5em;
+
+}

@@ -1,0 +1,9 @@
+.search{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.home{
+  background-color: rgb(239, 239, 244);;
+}

@@ -1,53 +1,69 @@
 .filters{
-  background-color: white;
-  text-align: left;
+  background-color: #f8edf2;
+  margin: 20px auto;
   padding: 10px;
-  border: 1px solid;
+  border: 3px solid white;
   border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  justify-content: center;
 }
+
+.filters div{
+  margin: auto;
+}
+
 
 .filters .bold{
   font-weight: bold;
-}
-
-.filters label{
+  margin: 8px;
   font-family: 'Abel', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
   line-height: 1.5;
 }
 
+.filters select{
+  font-family: 'Abel', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 15px;
+}
+
+
+
 .filters button{
-  background-color: black;
+  background-color: rgb(56, 56, 56);
   color: white;
   float: right;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 20px;
+  margin: auto 10px;
+  height: fit-content;
 }
 
 .filters button:hover{
-  color: aqua;
+  color: #D199B8;
 }
 
 .filters button:active{
-  color: aqua;
-}
-
-.filters input:checked{
-  background-color: aqua;
-  border-color: aqua;
+  color: #D199B8;
 }
 
 .filtros{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  
 }
 
+
 .labels{
-  width: 400px;
-  height: 150px;
-  overflow-x: scroll;
+  height: 100px;
+  overflow-y: scroll;
+  margin: 0px 20px 20px 20px;
 }
 
 .labels label{
-  background-color: white;
+  background-color: #D199B8;
+  color: white;
   line-height: 2.5;
   padding: 3px;
   margin:  5px;
@@ -57,3 +73,9 @@
   font-weight: bold;
 }
 
+.multi{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  position: relative;
+}

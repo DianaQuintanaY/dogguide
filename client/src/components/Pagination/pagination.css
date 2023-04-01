@@ -1,5 +1,5 @@
 .noActive{
-  background-color: black;
+  background-color: rgb(56, 56, 56);
   color: white;
 
 }
@@ -8,3 +8,12 @@
   background-color: white;
   color: black;
 }
+
+.pagination button{
+  font-size: 25px;
+  margin: 1px;
+  border-radius: 5px;
+  font-family: "Abel" ;
+  padding: 1px 8px;
+}
+

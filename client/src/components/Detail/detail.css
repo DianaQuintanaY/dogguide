@@ -30,13 +30,13 @@ h1.back{
 }
 
 h1.back:hover{
-  color: rgb(59, 113, 113);
+  color: #D199B8;
   width: fit-content;
   cursor: pointer;
 }
 
 h1.back:active{
-  color: rgb(86, 165, 165);
+  color: #D199B8;
   width: min-content;
   height: minnpm sta-content;
 }

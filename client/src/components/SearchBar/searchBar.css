@@ -1,12 +1,22 @@
-.searchbar{
-  background-color: black;
+.searchbarInput{
+  font-size: 20px;
+  border-radius: 6px;
+  background-color: white;
+  border: white;
+}
+
+.searchbarButton{
+  background-color: rgb(56, 56, 56);
   color: white;
+  font-size: 20px;
+  margin: 5px;
+  border-radius: 6px;
 }
 
-.searchbar:hover{
-  color: aqua;
+.searchbarButton:hover{
+  color: #D199B8;
 }
 
-.searchbar:active{
-  color: aqua;
+.searchbarButton:active{
+  color: #D199B8;
 }

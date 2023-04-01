@@ -1,19 +1,27 @@
 import Card from "../Card/Card";
 import {useSelector, useDispatch} from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {getCharacters} from "../../redux/actions";
+import Loading from "../Loading/Loading";
 import './cards.css';
 
 const Cards = () => {
   const dispatch = useDispatch();
   const characters = useSelector((state) => state.characters);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() =>{
-    dispatch(getCharacters())
+    setIsLoading(true);
+    dispatch(getCharacters());
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   }, [dispatch])
   
   return(
     <div className="cards">
+      {isLoading && <Loading/>}
+
         {characters.map((char)=>{
           return(
             <Card

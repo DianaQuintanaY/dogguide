@@ -2,10 +2,12 @@ import MultiList from "../MultiList/MultiList";
 import { useState } from "react";
 import { getRefreshPagination } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import Loading from "../Loading/Loading";
 import './filters.css'
 
 const Filters = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ 
     characteristics:'',
     origin:'all',
@@ -22,38 +24,58 @@ const Filters = () => {
   };
   const onSubmitFilter = (e) => {
     e.preventDefault();
-    dispatch(getRefreshPagination({filters:formData}))
+    setIsLoading(true);
+    dispatch(getRefreshPagination({filters:formData}));
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   }
 
 return (
   <div className="filtros">
-  <form onSubmit={onSubmitFilter} className="filters">
-  <div>
-  <label className="bold">Characteristics:</label>
-  <input type="radio" value="alphabetic" name="characteristics" checked={formData.characteristics === 'alphabetic'} onChange={setInfoRadios}/><label>alphabetic</label>
-  <input type="radio" value="weight" name="characteristics" checked={formData.characteristics === 'weight'} onChange={setInfoRadios}/><label>weight</label>
-  </div>
-  <div>
-  <label className="bold">Origin:</label>
-  <input type="radio" value="database" name="origin"  checked={formData.origin === 'database'} onChange={setInfoRadios}/><label>database</label>
-  <input type="radio" value="api" name="origin"  checked={formData.origin === 'api'} onChange={setInfoRadios}/><label>api</label>
-  <input type="radio" value="all" name="origin"  checked={formData.origin === 'all'} onChange={setInfoRadios}/><label>all</label>
-  </div>
-  <div>
-  <label className="bold">Order by:</label>
-  <input type="radio" value="ASC" name="ordenBy" checked={formData.ordenBy === 'ASC'} onChange={setInfoRadios}/><label>ASC</label>
-  <input type="radio" value="DESC" name="ordenBy" checked={formData.ordenBy === 'DESC'} onChange={setInfoRadios}/><label>DESC</label>
-  </div>
-  <label className="bold">Temperaments:</label>
-  <MultiList setInFormTemperaments={setInFormTemperaments} />
-  <br/>
-  <button type="submit">FILTER</button>
-</form>
-  <div> <p id="chosen">Chosen temperaments:</p>
-  <div className="labels">
-   {formData.temperaments.map(temp => <label> {temp} </label>)}
-  </div>
-  </div>
+    {isLoading && <Loading/>}
+    <form onSubmit={onSubmitFilter} className="filters">
+      <div>
+        <label className="bold">Order by:</label>
+        <select name="characteristics" value={formData.characteristics} onChange={setInfoRadios}>
+          <option value="">-- Select --</option>
+          <option value="alphabetic">Alphabetic</option>
+          <option value="weight">Weight</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="bold">Data Source:</label>
+        <select name="origin" value={formData.origin} onChange={setInfoRadios}>
+          <option value="">-- Select --</option>
+          <option value="database">Database</option>
+          <option value="api">API</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="bold">Order:</label>
+        <select name="ordenBy" value={formData.ordenBy} onChange={setInfoRadios}>
+          <option value="">-- Select --</option>
+          <option value="ASC">Ascending</option>
+          <option value="DESC">Descending</option>
+        </select>
+      </div>
+
+      <div className="multi">
+        <label className="bold">Temperaments:</label>
+        <MultiList setInFormTemperaments={setInFormTemperaments} />
+      </div>
+
+      <button type="submit">FILTER</button>
+    </form>
+
+    {
+      <div className="labels"> 
+        <p id="chosen">Selected temperaments:</p> 
+        {formData.temperaments.length? formData.temperaments.map(temp => <label> {temp} </label>) : <p>No temperament has been selected</p>}
+      </div>}
 </div>
 )
 }

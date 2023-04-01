@@ -1,22 +1,29 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCharactersByName } from "../../redux/actions";
+import Loading from "../Loading/Loading";
 import './searchBar.css'
 
 const SearchBar = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [state, setState] = useState('');
    const onChange = (e) =>{
       const value = e.target.value;
       setState(value);
    };
    const onClick = () => {
-      dispatch(getCharactersByName(state))
+    setIsLoading(true);
+    dispatch(getCharactersByName(state));
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
    };
   return(
-    <div>
-      <input onChange={onChange} type='search' placeholder="Search by Breeds"/>
-      <button className="searchbar" onClick={onClick}>SEARCH</button>
+    <div className="searchbar">
+      {isLoading && <Loading/>}
+      <input className="searchbarInput" onChange={onChange} type='search' placeholder="Search by Breeds"/>
+      <button className="searchbarButton" onClick={onClick}>SEARCH</button>
     </div>
   )
 };

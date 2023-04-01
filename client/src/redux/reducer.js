@@ -6,6 +6,7 @@ const initialState = {
   allTemperaments: [],
   infoPagination: {},
   recentlyCreated: "",
+  error: false,
 };
 
 const reducer = (state = initialState, action) =>{

@@ -10,8 +10,8 @@ const Card = (props) => {
     <div className="card"  onClick={redirectToDetail}>
       <img src={props.image} alt=""/>
       <h2 className ="cardName">{props.name}</h2>
-      <h2>{props.temperaments}</h2>
-      <h2>{props.weight}</h2>
+      <h2><b>Temperaments:</b> {props.temperaments}</h2>
+      <h2><b>Weight:</b> {props.weight} Kg</h2>
     </div>
   )
 };

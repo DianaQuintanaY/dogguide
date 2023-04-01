@@ -65,12 +65,23 @@ const Form = () => {
   };
 
   const onClose = () => {
-    setwindowD(false)
+    setwindowD(false);
+    setFormData({ 
+      name: '', 
+      image: '',
+      heightMin: 0,
+      heightMax: 0,
+      weightMin:0,
+      weightMax:0,
+      life_span:0,
+      temperaments:[],
+    });
   }
 
   return(
     <div className="form">
       <form className="create" onSubmit={handleSubmit}>
+        <h3>ADD NEW DOG:</h3>
         <label>Name of Breeds: </label>
         <input name="name" type="text" value={formData.name} onChange={handleInputChange}></input>
         {errors.name? <p>{errors.name}</p> : <p> </p>}

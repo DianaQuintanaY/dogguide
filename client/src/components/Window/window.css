@@ -1,17 +1,18 @@
 .windowDetail{
   position: absolute;
   z-index: 2;
-  background-color: white;
-  border: 3px solid;
+  background-color: rgb(39, 38, 38);
+  color: white;
+  border: 3px solid rgb(158, 157, 157);
   padding: 20px;
   border-radius: 10px;
 }
 
 #green{
-  background-color: greenyellow;
+  background-color: rgb(174, 190, 149);
   color: black
 }
 
 #red{
-  background-color: red;
+  background-color: #ea2193;
 }

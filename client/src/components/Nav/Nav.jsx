@@ -5,7 +5,7 @@ const Nav = (props) => {
   return(
     <nav className="nav">
       <ul >
-        <li><NavLink className="navText" to='/'>Logout</NavLink></li>
+        <li><NavLink className="navText" to='/'>Landing</NavLink></li>
         <li><NavLink className="navText" activeClassName="navActive" to='/home'>Home</NavLink></li>
         <li><NavLink className="navText" activeClassName="navActive" to='/create'>Create</NavLink></li>
       </ul>

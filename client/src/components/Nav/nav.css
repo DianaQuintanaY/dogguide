@@ -1,12 +1,14 @@
 
 .nav{
-    background-color: black;
+  background-color: rgb(56, 56, 56);
 }
 
 .nav ul {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   font-size: 1.8rem;
+  list-style: none;
 }
 
 .nav li {
@@ -17,8 +19,6 @@
 .navText{
   text-decoration: none;
   color: white;
-  display: flex;
-  justify-content: center;
   font-family: 'Abel';
   font-size: 3.2rem;
   padding: 1.0rem;
@@ -26,15 +26,15 @@
 
 .navText:hover{
   text-decoration: underline;
-  color: aqua;
+  color: #D199B8;
 }
 
 .navActive{
-  color: rgb(59, 124, 124)
+  color: #8e7682
 }
 
 .navActive:hover{
-  color: rgb(59, 124, 124);
+  color:  #8e7682;
   text-decoration: none;
   cursor: default
 }

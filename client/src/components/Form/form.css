@@ -1,9 +1,9 @@
 .create {
   width: 350px;
-  background-color: white;
+  background-color: #F5D5E3;
   margin: 20px;
-  padding: 20px;
-  border: 1px solid;
+  padding: 10px 20px;
+  border: 3px solid white;
   border-radius: 20px;
   text-align: left;
 }
@@ -19,16 +19,21 @@
   font-weight: bold;
 }
 
+.form h3{
+  font-weight: bold;
+  color: white;
+}
+
 .form button{
   float: right;
-  background-color: black;
+  background-color: rgb(56, 56, 56);
   color: white;
   font-size: large;
   border-radius: 5px;
 }
 
 .form button:hover{
-  color: aqua;
+  color: #D199B8;
 }
 
 .number{
@@ -36,7 +41,7 @@
 }
 
 .form p{
-  color: red;
+  color: #dc81b3;
   height: 1.5em;
 
 }

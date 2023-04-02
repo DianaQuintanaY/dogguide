@@ -43,7 +43,7 @@
   width: 100px;
   height: 100px;
   margin: auto;
-}
+} 
 
 .landing button:hover {
   transform: translateY(-5px);

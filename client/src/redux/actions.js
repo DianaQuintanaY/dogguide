@@ -4,7 +4,8 @@ import {
     CLEAN_DETAIL, 
     SAVE_CHARACTERS, 
     SEARCH_BY_NAME,
-    GET_TEMPERAMENTS
+    GET_TEMPERAMENTS,
+    SHOW_ERROR
  } from "./action-type";
 import axios from "axios";
 
@@ -23,7 +24,8 @@ export const getCharacters = () =>{
          };
             return dispatch({type: GET_CHARACTERS, payload: info}) 
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            return dispatch({type: SHOW_ERROR, payload: error});
         }
     }
 };
@@ -44,7 +46,8 @@ export const characterDetail = (id)=>{
             };
             return dispatch({type: CHARACTER_DETAIL, payload: result }) 
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            return dispatch({type: SHOW_ERROR, payload: error});
         }
     }
 };
@@ -59,8 +62,9 @@ export const saveCharacters = (body) => {
             const response = await axios.post('http://localhost:3001/dogs/', body);
             const data = response.data;
             return dispatch({type:SAVE_CHARACTERS, payload: data})
-        }catch(err){
-            console.log(err)
+        }catch(error){
+            console.log(error);
+            return dispatch({type: SHOW_ERROR, payload: error});
         }
     }
 };
@@ -80,7 +84,8 @@ export const getCharactersByName = (name) => {
          };
         return dispatch({type: SEARCH_BY_NAME, payload: info }) 
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            return dispatch({type: SHOW_ERROR, payload: error});
         }
     }
 };
@@ -90,9 +95,9 @@ export const getTemperaments = async (dispatch) => {
         let response = await axios.get('http://localhost:3001/temperaments/all');
         let data = response.data;
         return dispatch({type: GET_TEMPERAMENTS, payload: data})
-    } catch(err) {
-        console.log(err)
-
+    } catch(error) {
+        console.log(error);
+        return dispatch({type: SHOW_ERROR, payload: error});
     }
 };
 
@@ -107,7 +112,6 @@ export const getRefreshPagination = ({page=1,filters,limit=8} ) => {
         if(characteristics) body.characteristics=characteristics;
         if(name) body.name = name;
         if(origin) body.origin = origin;
-        console.log(body);
         let response = await axios.post('http://localhost:3001/dogs/search', body )
         let info = response.data;
         info ={...info, data: info.data.map(item => { return { 
@@ -118,10 +122,10 @@ export const getRefreshPagination = ({page=1,filters,limit=8} ) => {
                 weight: item.weight}
             })
          };
-        console.log(info)
         return dispatch({type: SEARCH_BY_NAME, payload: info })
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            return dispatch({type: SHOW_ERROR, payload: error});
         }
     }
 };

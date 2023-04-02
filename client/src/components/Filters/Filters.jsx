@@ -1,22 +1,36 @@
 import MultiList from "../MultiList/MultiList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {useSelector, useDispatch} from "react-redux";
 import { getRefreshPagination } from "../../redux/actions";
-import { useDispatch } from "react-redux";
 import Loading from "../Loading/Loading";
 import './filters.css'
 
 const Filters = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({ 
-    characteristics:'',
-    origin:'all',
-    ordenBy:'',
-    temperaments:[] 
+  const {filters} = useSelector((state) => state.infoPagination);
+
+  const [formData, setFormData] = useState({
+    characteristics: '' ,
+    origin: 'all',
+    ordenBy: '',
+    temperaments: []
   });
   const setInFormTemperaments = (temps) => {
     setFormData({...formData, temperaments: temps})
   };
+
+  useEffect(
+    () => {
+      setFormData( !filters? 
+        formData : 
+        {...formData, 
+          characteristics: filters.characteristics? filters.characteristics : formData.characteristics , 
+          origin: filters.origin? filters.origin : formData.origin , 
+          ordenBy: filters.ordenBy? filters.ordenBy : formData.ordenBy , 
+        })},[]
+  )
+
   const setInfoRadios = ({target}) => {
     const name = target.name;
     const value = target.value;
@@ -74,7 +88,7 @@ return (
     {
       <div className="labels"> 
         <p id="chosen">Selected temperaments:</p> 
-        {formData.temperaments.length? formData.temperaments.map(temp => <label> {temp} </label>) : <p>No temperament has been selected</p>}
+        {formData.temperaments.length? formData.temperaments.map(temp => <label key={temp}> {temp} </label>) : <p>No temperament has been selected</p>}
       </div>}
 </div>
 )

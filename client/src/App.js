@@ -6,11 +6,15 @@ import Form from './components/Form/Form';
 import Nav from './components/Nav/Nav'
 import { Route, Switch, useLocation} from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
+import Errors from './components/Errors/Errors';
+import { useSelector } from 'react-redux';
 
 function App() {
   const location = useLocation();
+  const error = useSelector( (state) => state.error );
   return (
     <div className="App">
+      {error.status? <Errors status={error.status} message={error.message}/>:<></>}
       {location.pathname !== '/'? <Nav/> : <></>}
       <Switch>
         <Route path='/' exact component={Landing} />

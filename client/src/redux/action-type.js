@@ -4,3 +4,4 @@ export const CLEAN_DETAIL = 'CLEAN_DETAIL';
 export const SAVE_CHARACTERS = 'SAVE_CHARACTERS';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
+export const SHOW_ERROR ='SHOW_ERROR';

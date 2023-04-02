@@ -8,17 +8,19 @@ import {getTemperaments} from "../../redux/actions";
 const MultiList = (props) =>{
   const dispatch = useDispatch();
   const allTemperaments = useSelector(state => state.allTemperaments);
-  const [allTemps, setAllTemps] = useState(allTemperaments);
+  const [allTemps, setAllTemps] = useState(allTemperaments.map((item)=> {return{...item, isChecked: false }}));
   const [searchValue, setSearchValue] = useState('');
   const [expanded, setExpanded] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
+  const {filters} = useSelector((state) => state.infoPagination);
 
   useEffect(() => {
     dispatch(getTemperaments);
   }, []);
 
   useEffect(() => {
-    const all = allTemperaments.map((item)=> {return{...item, isChecked: false }});
+    const all = allTemperaments.map((item)=> {return{...item, 
+      isChecked: filters? filters.temperaments? filters.temperaments.includes(item.name) : false : false }});
     setAllTemps(all)
   }, [allTemperaments]);
 
@@ -26,6 +28,13 @@ const MultiList = (props) =>{
     props.setInFormTemperaments(allTemps.filter(temp=> temp.isChecked).map(el => el.name));
   }, [allTemps]);
 
+  useEffect(()=>{
+    if(allChecked){
+      setAllTemps([...allTemps].map((temp)=>{ return {...temp, isChecked:true}}))
+    }else{
+      setAllTemps([...allTemps].map((temp)=>{ return {...temp, isChecked:false}}))
+    }
+  },[allChecked])
 
   const changeIsChecked = ({target}) => {
     const name = target.name;
@@ -46,14 +55,6 @@ const MultiList = (props) =>{
   const changeCheckedAll = () => {
     setAllChecked(!allChecked)
   };
-
-  useEffect(()=>{
-    if(allChecked){
-      setAllTemps([...allTemps].map((temp)=>{ return {...temp, isChecked:true}}))
-    }else{
-      setAllTemps([...allTemps].map((temp)=>{ return {...temp, isChecked:false}}))
-    }
-  },[allChecked])
 
   const filterName = allTemps.filter(temp => temp.name.toLowerCase().includes(searchValue))
   return(

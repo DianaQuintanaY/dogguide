@@ -1,4 +1,12 @@
-import { GET_CHARACTERS, CHARACTER_DETAIL, CLEAN_DETAIL, SAVE_CHARACTERS, SEARCH_BY_NAME, GET_TEMPERAMENTS } from "./action-type";
+import { 
+  GET_CHARACTERS, 
+  CHARACTER_DETAIL, 
+  CLEAN_DETAIL, 
+  SAVE_CHARACTERS, 
+  SEARCH_BY_NAME, 
+  GET_TEMPERAMENTS,
+  SHOW_ERROR
+ } from "./action-type";
 
 const initialState = {
   characters: [],
@@ -6,7 +14,7 @@ const initialState = {
   allTemperaments: [],
   infoPagination: {},
   recentlyCreated: "",
-  error: false,
+  error: {},
 };
 
 const reducer = (state = initialState, action) =>{
@@ -50,6 +58,11 @@ const reducer = (state = initialState, action) =>{
       return {
         ...state,
         allTemperaments: action.payload
+      }
+    case SHOW_ERROR:
+      return {
+        ...state,
+        error: action.payload
       }
     default:
       return {...state}

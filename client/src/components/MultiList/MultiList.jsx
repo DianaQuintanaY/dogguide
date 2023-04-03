@@ -19,7 +19,7 @@ const MultiList = (props) =>{
 
   useEffect(() => {
     const all = allTemperaments.map((item)=> {return{...item, 
-      isChecked: props.keepTemperaments? props.keepTemperaments.includes(item.name)  : false }});
+      isChecked: props.keepTemperaments? props.keepTemperaments.length?  props.keepTemperaments.includes(item.name)  : false : false }});
     setAllTemps(all)
   }, [allTemperaments]);
 

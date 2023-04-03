@@ -16,20 +16,21 @@ const Filters = () => {
     ordenBy: '',
     temperaments: []
   });
-  const setInFormTemperaments = (temps) => {
-    setFormData({...formData, temperaments: temps})
-  };
-
+  
   useEffect(
     () => {
       setFormData( !filters? 
         formData : 
         {...formData, 
-          characteristics: filters.characteristics? filters.characteristics : formData.characteristics , 
-          origin: filters.origin? filters.origin : formData.origin , 
-          ordenBy: filters.ordenBy? filters.ordenBy : formData.ordenBy , 
-        })},[]
+          characteristics: filters.characteristics? filters.characteristics : '', 
+          origin: filters.origin? filters.origin : '' , 
+          ordenBy: filters.ordenBy? filters.ordenBy : '' , 
+        })},[filters]
   )
+
+  const setInFormTemperaments = (temps) => {
+    setFormData({...formData, temperaments: temps})
+  };
 
   const setInfoRadios = ({target}) => {
     const name = target.name;
@@ -79,7 +80,7 @@ return (
 
       <div className="multi">
         <label className="bold">Temperaments:</label>
-        <MultiList setInFormTemperaments={setInFormTemperaments} keepTemperaments = {filters? filters.temperaments? filters.temperaments : undefined : undefined } />
+        <MultiList setInFormTemperaments={setInFormTemperaments}  key={JSON.stringify(filters?.temperaments)} keepTemperaments = {filters? filters.temperaments : [] } />
       </div>
 
       <button type="submit">FILTER</button>

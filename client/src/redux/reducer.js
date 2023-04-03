@@ -6,8 +6,6 @@ import {
   SEARCH_BY_NAME, 
   GET_TEMPERAMENTS,
   SHOW_ERROR,
-  DELETE_CHARACTERS,
-  UPDATE_CHARACTERS,
   CLEAN_ERROR,
  } from "./action-type";
 

@@ -12,7 +12,6 @@ const MultiList = (props) =>{
   const [searchValue, setSearchValue] = useState('');
   const [expanded, setExpanded] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
-  const {filters} = useSelector((state) => state.infoPagination);
 
   useEffect(() => {
     dispatch(getTemperaments);
@@ -20,7 +19,7 @@ const MultiList = (props) =>{
 
   useEffect(() => {
     const all = allTemperaments.map((item)=> {return{...item, 
-      isChecked: filters? filters.temperaments? filters.temperaments.includes(item.name) : false : false }});
+      isChecked: props.keepTemperaments? props.keepTemperaments.includes(item.name)  : false }});
     setAllTemps(all)
   }, [allTemperaments]);
 

@@ -1,15 +1,21 @@
 import { useHistory } from "react-router-dom";
 import { characterDetail, cleanDetail } from "../../redux/actions";
 import {useDispatch, useSelector} from 'react-redux'
-import { useEffect } from 'react';
+import { useState,useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import "./detail.css"
+import "./detail.css";
+import DeleteWindow from "./DeleteWindow/DeleteWindow";
+import UpdateWindow from "./UpdateWindow/UpdateWindow";
+import SuccessWindow from "./SuccessWindow/SucessWindow";
 
 const CharacterDetail = () => {
   
   const dispatch = useDispatch();
    const {id} = useParams();
    const detail = useSelector(state => state.characterDetail);
+   const [deleteState, setDeleteState] = useState(false);
+   const [updateState, setUpdateState] = useState(false);
+   const [successState, setSuccessState] = useState(false);
 
    const history = useHistory();
   const redirectToBack = () => {
@@ -19,6 +25,25 @@ const CharacterDetail = () => {
     dispatch(characterDetail(id));
     return () => dispatch(cleanDetail())
    }, [dispatch,id])
+
+   const showDeleteWindow = () => {
+    setDeleteState(!deleteState)
+   };
+
+   const showUpdateWindow = () => {
+    setUpdateState(!updateState)
+   };
+
+   const onCloseWindow = () => {
+    setDeleteState(false);
+    setUpdateState(false);
+   }
+
+   const successWindow = () => {
+    setDeleteState(false);
+    setUpdateState(false);
+    setSuccessState(true)
+   }
 
   return(
     <div className="detail">
@@ -33,7 +58,15 @@ const CharacterDetail = () => {
       <h1 className="back" onClick={redirectToBack}>
       ◄◄
       </h1>
+      {isNaN(Number(detail.id))&& 
+      <div>
+        <button onClick={showDeleteWindow}>DELETE</button>
+        <button onClick={showUpdateWindow}>UPDATE</button>
+      </div>}
       </div>
+      {deleteState && <DeleteWindow id={detail.id} onCloseWindow={onCloseWindow} successWindow={successWindow}/>}
+      {updateState && <UpdateWindow id={detail.id} onCloseWindow={onCloseWindow} successWindow={successWindow}/>}
+      {successState && <SuccessWindow />}
     </div>
   )
 };

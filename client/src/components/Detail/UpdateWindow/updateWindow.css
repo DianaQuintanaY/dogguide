@@ -1,0 +1,61 @@
+
+.update {
+  width: 350px;
+  background-color: #F5D5E3;
+  margin: 20px;
+  padding: 10px 20px;
+  border: 3px solid white;
+  border-radius: 20px;
+  text-align: left;
+
+  font-family: 'Abel';
+  position: absolute;
+  top: 0px; 
+  right: 40%;
+  z-index: 1;
+}
+
+.update label{
+  font-weight: bold;
+}
+
+.update h3{
+  font-weight: bold;
+  color: white;
+}
+
+.update button{
+  float: right;
+  background-color: rgb(56, 56, 56);
+  color: white;
+  font-size: large;
+  border-radius: 5px;
+}
+
+.update button:hover{
+  color: #D199B8;
+}
+
+.number{
+  width: 40px;
+}
+
+.update p{
+  color: #dc81b3;
+  height: 1.5em;
+
+}
+
+.updateLabels{
+  height: 40px;
+  overflow-y: scroll;
+  margin: 0px 20px 20px 20px;
+}
+
+.updateLabels label{
+  background-color: #D199B8;
+  color: white;
+  line-height: 2.5;
+  padding: 3px;
+  margin:  5px;
+}

@@ -5,7 +5,10 @@ import {
   SAVE_CHARACTERS, 
   SEARCH_BY_NAME, 
   GET_TEMPERAMENTS,
-  SHOW_ERROR
+  SHOW_ERROR,
+  DELETE_CHARACTERS,
+  UPDATE_CHARACTERS,
+  CLEAN_ERROR,
  } from "./action-type";
 
 const initialState = {
@@ -63,6 +66,11 @@ const reducer = (state = initialState, action) =>{
       return {
         ...state,
         error: action.payload
+      }
+    case CLEAN_ERROR:
+      return {
+        ...state,
+        error: {}
       }
     default:
       return {...state}

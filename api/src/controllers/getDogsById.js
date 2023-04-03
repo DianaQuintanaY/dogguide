@@ -6,8 +6,6 @@ const getDogsById = async(req, res) => {
     const {idRaza} = req.params;
     let dogDetail;
 
-    const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89aAbB][0-9a-f]{3}-[0-9a-f]{12}$/i;
-    if(!(!isNaN(Number(idRaza)) || regex.test(idRaza))) throw new Error('Id no valido');
     if(!isNaN(Number(idRaza))){
       dogDetail =  await apiDogs({})
       dogDetail = dogDetail.find(dog => dog.id === Number(idRaza));

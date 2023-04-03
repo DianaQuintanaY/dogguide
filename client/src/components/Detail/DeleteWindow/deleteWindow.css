@@ -1,0 +1,19 @@
+.windowDetail{
+  position: absolute;
+  z-index: 2;
+  background-color: rgb(39, 38, 38);
+  color: white;
+  border: 3px solid rgb(158, 157, 157);
+  padding: 20px;
+  border-radius: 10px;
+  right: 30%;
+}
+
+#green{
+  background-color: rgb(174, 190, 149);
+  color: black
+}
+
+#red{
+  background-color: #ea2193;
+}

@@ -30,7 +30,6 @@ const dbDogs = async({ temperaments, ordenBy, characteristics, name, limit, page
     };
     
     let dataDogs = await Dogs.findAll(options);
-    console.log(dataDogs);
  
     let dballdogs = [...dataDogs].map((dog) => {
     return {

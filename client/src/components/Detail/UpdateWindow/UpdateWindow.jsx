@@ -1,17 +1,13 @@
 import {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {validate} from "../validation";
-import {saveCharacters} from "../../redux/actions";
-import MultiList from "../MultiList/MultiList";
-import Card from "../Card/Card";
-import "./form.css";
-import WindowDetail from "../Window/Window"
+import {validate} from "../../validation";
+import { updateCharacters } from "../../../redux/actions";
+import MultiList from "../../MultiList/MultiList";
+import "./updateWindow.css";
 
 
-const Form = () => {
+const UpdateWindow = (props) => {
   const dispatch = useDispatch();
-  const imageDefault = 'https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';
-  const [windowD, setwindowD] = useState(false)
   const [formData, setFormData] = useState({ 
     name: '', 
     image: '',
@@ -40,47 +36,26 @@ const Form = () => {
   useEffect(() =>{
     setFormData(formData);
     setErrors(validate(formData));
-
   }, [formData]);
 
-  useEffect(() =>{
-    setwindowD(windowD);
-  }, [windowD]);
-  
-  
   const handleSubmit = (event) => {
     if(Object.keys(errors).length === 0){
       event.preventDefault();
-      dispatch(saveCharacters(formData));
-      setwindowD(true);
+      dispatch(updateCharacters(props.id, formData));
+      props.successWindow();
     } else {
       window.alert('Completar Errores')
     }
-    
   };
 
   const setInFormTemperaments = (temps) => {
     setFormData({...formData, temperaments: temps})
   };
 
-  const onClose = () => {
-    setwindowD(false);
-    setFormData({ 
-      name: '', 
-      image: '',
-      heightMin: 0,
-      heightMax: 0,
-      weightMin:0,
-      weightMax:0,
-      life_span:0,
-      temperaments:[],
-    });
-  }
 
   return(
-    <div className="form">
-      <form className="create" onSubmit={handleSubmit}>
-        <h3>ADD NEW DOG:</h3>
+      <form className="update" onSubmit={handleSubmit}>
+        <h3>UPDATE DOG:</h3>
         <label>Name of Breeds: </label>
         <input name="name" type="text" value={formData.name} onChange={handleInputChange}></input>
         {errors.name? <p>{errors.name}</p> : <p> </p>}
@@ -114,23 +89,16 @@ const Form = () => {
         {errors.life_span? <p>{errors.life_span}</p>  : <p> </p>}
 
         <label>Temperaments: </label>
+        <div className="updateLabels"> 
+          {formData.temperaments.length? formData.temperaments.map(temp => <label key={temp}> {temp} </label>) : <p>No temperament has been selected</p>}
+        </div>
         <MultiList setInFormTemperaments={setInFormTemperaments} />
         <br/>
+        <button  type="button" onClick={props.onCloseWindow}>CLOSE</button>
         <button type="submit">SUBMIT</button>
       </form>
-      <div>
-        <Card
-        key = 'prev'
-        id = {undefined}
-        name = {formData.name}
-        temperaments = {formData.temperaments.join(', ')}
-        weight = {`${formData.weightMin}- ${formData.weightMax}`}
-        image = {formData.image? formData.image: imageDefault }
-        />
-      </div>
-    {windowD && <WindowDetail onClose={onClose}/>}
-    </div>
   )
+
 };
 
-export default Form ;
+export default UpdateWindow

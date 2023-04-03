@@ -40,3 +40,15 @@ h1.back:active{
   width: min-content;
   height: minnpm sta-content;
 }
+
+.detail button{
+  float: right;
+  background-color: #D199B8;
+  color: white;
+  font-size: large;
+  border-radius: 5px;
+}
+
+.detail button:hover{
+  color: rgb(56, 56, 56);
+}

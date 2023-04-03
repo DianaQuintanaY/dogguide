@@ -79,7 +79,7 @@ return (
 
       <div className="multi">
         <label className="bold">Temperaments:</label>
-        <MultiList setInFormTemperaments={setInFormTemperaments} />
+        <MultiList setInFormTemperaments={setInFormTemperaments} keepTemperaments = {filters? filters.temperaments? filters.temperaments : undefined : undefined } />
       </div>
 
       <button type="submit">FILTER</button>

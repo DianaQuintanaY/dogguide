@@ -1,0 +1,16 @@
+.successDetail{
+  position: absolute;
+  z-index: 2;
+  background-color: rgb(39, 38, 38);
+  color: white;
+  border: 3px solid rgb(158, 157, 157);
+  padding: 20px;
+  border-radius: 10px;
+  left: 30%;
+  width: 300px;
+}
+
+#pink{
+  background-color: pink;
+  color: black
+}

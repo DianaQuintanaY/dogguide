@@ -14,7 +14,7 @@ function App() {
   const error = useSelector( (state) => state.error );
   return (
     <div className="App">
-      {error.status? <Errors status={error.status} message={error.message}/>:<></>}
+      {error.message? <Errors response={error.response} message={error.message}/>:<></>}
       {location.pathname !== '/'? <Nav/> : <></>}
       <Switch>
         <Route path='/' exact component={Landing} />

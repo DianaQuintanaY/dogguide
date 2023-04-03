@@ -12,7 +12,7 @@ const WindowDetail = (props) => {
     <div className='windowDetail'>
       <h1>Successfully Created</h1>
       <div className="manageButton">
-      <button  id="red" onClick={props.onClose} >Close</button>
+      <button  id="red" onClick={props.onCloseWindow} >Close</button>
       <button id="green" onClick={redirectToDetail}>View</button>
       </div>
     </div>

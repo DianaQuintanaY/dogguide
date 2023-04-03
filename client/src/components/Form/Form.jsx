@@ -5,13 +5,15 @@ import {saveCharacters} from "../../redux/actions";
 import MultiList from "../MultiList/MultiList";
 import Card from "../Card/Card";
 import "./form.css";
-import WindowDetail from "../Window/Window"
+import WindowDetail from "../Window/Window";
+import WindowCompleteErr from "./WindowCompleteErr/WindowCompleteErr";
 
 
 const Form = () => {
   const dispatch = useDispatch();
   const imageDefault = 'https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';
-  const [windowD, setwindowD] = useState(false)
+  const [windowD, setwindowD] = useState(false);
+  const [windowE, setwindowE] = useState(false);
   const [formData, setFormData] = useState({ 
     name: '', 
     image: '',
@@ -49,12 +51,12 @@ const Form = () => {
   
   
   const handleSubmit = (event) => {
+    event.preventDefault();
     if(Object.keys(errors).length === 0){
-      event.preventDefault();
       dispatch(saveCharacters(formData));
       setwindowD(true);
     } else {
-      window.alert('Completar Errores')
+      setwindowE(true)
     }
     
   };
@@ -63,7 +65,11 @@ const Form = () => {
     setFormData({...formData, temperaments: temps})
   };
 
-  const onClose = () => {
+  const onCloseWindowErr = () => {
+    setwindowE(false)
+  }
+
+  const onCloseWindow = () => {
     setwindowD(false);
     setFormData({ 
       name: '', 
@@ -128,7 +134,8 @@ const Form = () => {
         image = {formData.image? formData.image: imageDefault }
         />
       </div>
-    {windowD && <WindowDetail onClose={onClose}/>}
+    {windowD && <WindowDetail onCloseWindow={onCloseWindow}/>}
+    {windowE && <WindowCompleteErr onCloseWindowErr = {onCloseWindowErr} />}
     </div>
   )
 };

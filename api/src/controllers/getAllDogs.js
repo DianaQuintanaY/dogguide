@@ -16,7 +16,7 @@ const getAllDogs = async(req, res) => {
       data,
       filters:{}
     };
-    return res.status(201).json(response)
+    return res.status(200).json(response)
   } catch (err){
     return res.status(404).send(err.message)   
   }

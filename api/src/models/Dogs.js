@@ -12,6 +12,13 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        haveFormatImg(value) {
+          const formatoImagenRegex = /\.(jpg|jpeg|png)$/;
+          if(!formatoImagenRegex.test(value)) 
+            throw new Error('La imagen debe ser en formato "jpg", "jpeg" o "png" ');
+        }
+      }
     },
     name: {
       type: DataTypes.STRING,
